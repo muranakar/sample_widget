@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_widget/sample_page/column_tutorial_page.dart';
 import 'package:sample_widget/sample_page/container_page.dart';
 import 'package:sample_widget/sample_page/row_page.dart';
 import 'package:sample_widget/model/tutorial_widget.dart';
@@ -9,11 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Widget Tutorial'),
-      ),
-      body: ListView(
+    var listView = ListView(
         children: [
           _buildTutorialCard(
             context: context,
@@ -36,12 +33,26 @@ class HomePage extends StatelessWidget {
             tutorial: TutorialWidget(
               name: 'Column',
               description: '子ウィジェットを垂直方向に配置するためのウィジェットです。',
+              page: const ColumnTutorialPage(),
+            ),
+          ),
+          _buildTutorialCard(
+            context: context,
+            tutorial: TutorialWidget(
+              name: 'Wrap',
+              description: '子ウィジェットを垂直方向に配置するためのウィジェットです。',
               page: const RowTutorialPage(),
             ),
           ),
-          // 他のウィジェットも同様に追加
+          
         ],
+      );
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Widget Tutorial'),
       ),
+      body: listView,
     );
   }
 
